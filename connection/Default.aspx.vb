@@ -129,7 +129,14 @@ Public Class _Default
 
         If reader.HasRows Then
 
+
             filename = reader(5) 'getting the filename of the form from the database
+            lblDepartment.Text = reader(1)
+            lblFormctrlnum.Text = reader(2)
+            lblFormtitle.Text = reader(3)
+            lblfilename.Text = reader(5)
+            lblContenttype.Text = reader(6)
+            btnDowload.Enabled = True
 
             Dim directory As String
             directory = Server.MapPath("~/pdf_files/" + filename)
@@ -138,7 +145,7 @@ Public Class _Default
 
             Dim embed As String
             embed = " "
-            embed = "<object data=""{0}"" type=""application/pdf"" width=""500px"" height=""500px"" > </object>"
+            embed = "<object data=""{0}"" type=""application/pdf"" width=""200x"" height=""200px"" > </object>"
             HyperLink1.Text = String.Format(embed, ResolveUrl("~/pdf_files/" + filename))
 
         Else
@@ -152,4 +159,170 @@ Public Class _Default
 
     End Sub
 
+    Protected Sub btnsearch1_Click(sender As Object, e As EventArgs) Handles btnsearch1.Click
+
+
+        Dim query As String
+        Dim empNum As String
+
+        empNum = txtEmpnum.Value
+
+        connection = New MySqlConnection
+        connection.ConnectionString = ("server='localhost'; port='3306'; username='root'; password='powerhouse'; database='eforms'")
+
+        query = ("SELECT EMP_NO, EMP_NAME, DEPARTMENT FROM emp_masterlist WHERE EMP_NO = '" & empNum & "'") '' REMINDER - BAGO MAG SAVE SA DATABASE IMPORTANTENG NAKA TRIM ANG MGA SPACES PARA WALANG PROBLEMA PAG NAG FETCH NA NG DATA FROM DATABASE
+
+        command = New MySqlCommand(query, connection)
+        connection.Open()
+
+        Dim reader As MySqlDataReader
+        reader = command.ExecuteReader()
+        reader.Read()
+
+
+        If reader.HasRows Then
+
+            lblRequestor.Text = reader(1)
+            lblRequestordept.Text = reader(2)
+
+
+            reader.Close()
+            connection.Close()
+
+        Else
+            MsgBox("Sorry, employee number doesn't exist.")
+        End If
+
+    End Sub
+
+    Protected Sub btnDowload_Click(sender As Object, e As EventArgs) Handles btnDowload.Click
+
+        '' save yung for approval na pdf sa for approval folder
+
+        Dim savefilename As String
+        savefilename = lblfilename.Text
+
+        Dim directory As String
+        Dim contentType As String
+        contentType = lblContenttype.Text
+
+        Dim pdfSavingStatus As String
+        pdfSavingStatus = "failed"
+
+        directory = "C:\Users\romer.legaspi\source\repos\e_forms\connection\pdf_files\" + savefilename '' gagawa ng validation para malaman kung tamang ang file name na kailangan i submit lalo na pag mga signatory na ang gagawa
+
+        Dim copyFile As String
+        Dim appspecs As String
+        appspecs = txtasn.Value
+        Dim filename As String
+        filename = appspecs + ".pdf"
+        copyFile = "C:\Users\romer.legaspi\source\repos\e_forms\connection\for_approval\" + filename
+
+        '  Label6.Text = directory for validation lang ito
+
+        If contentType = "application/pdf" Then ''  <---- check kung PDF file ang document
+
+            If File.Exists(copyFile) Then '' <---- check kung may kapangalan ng file
+
+                '' delete muna ang lumang file na guston paltan. --------------------------------
+
+                '' File.Delete(copyFile)
+
+                ''end of deleteing --------------------------------------------------------------
+
+                '' start saving young edited file -----------------------------------------------
+
+                ''  File.Copy(directory, copyFile)
+
+                ''   Process.Start(copyFile)
+
+                MsgBox("file already exist")
+                pdfSavingStatus = "success"
+
+                ' end -----  upload (saving) pdf file to mysql database
+
+            Else ''  <---- if walang katulad na filename
+
+
+                File.Copy(directory, copyFile)
+
+                MsgBox("New request has been posted.")
+                Process.Start("C:\Users\romer.legaspi\source\repos\e_forms\connection\for_approval\" + filename)
+                ''  Response.Redirect(Request.Url.AbsoluteUri)
+
+
+                pdfSavingStatus = "success"
+
+            End If
+
+            ' save sa database tblapprovalrequest saka tblapprover -------------------------------------------------------------------------------
+
+            If pdfSavingStatus = "success" Then
+
+
+                Dim deptarea As String
+                Dim formctrlnum As String
+                Dim frmtitle As String
+
+
+                Dim requestor As String
+                Dim reqdept As String
+                Dim reqdate As String
+
+                Dim approverstatus As String
+
+
+
+                deptarea = lblDepartment.Text
+                formctrlnum = lblFormctrlnum.Text
+                frmtitle = lblFormtitle.Text
+                appspecs = txtasn.Value
+
+                If appspecs = "" Then
+
+                    appspecs = "NA"
+
+                End If
+
+
+                requestor = lblRequestor.Text
+                reqdept = lblRequestordept.Text
+                reqdate = Today.ToString("yyyy-MM-dd")
+                approverstatus = "Pending"
+
+
+
+                Dim query As String
+
+                connection = New MySqlConnection
+                connection.ConnectionString = ("server='localhost'; port='3306'; username='root'; password='powerhouse'; database='eforms'")
+
+                'tblapprovalrequest -------------------------------------------------------------------------------------------------------------
+
+                query = ("INSERT INTO tblapprovalrequest (formControlnum, filename, applicableSpecs, requestorName, requestorDepartment, requestStatus, requestDate) VALUES ('" & formctrlnum & "', '" & filename & "', '" & appspecs & "', '" & requestor & "', '" & reqdept & "', '" & approverstatus & "', '" & reqdate & "')")
+
+                command = New MySqlCommand(query, connection)
+
+                Dim reader As MySqlDataReader
+                connection.Open()
+
+                reader = command.ExecuteReader()
+                reader.Read()
+
+                reader.Close()
+
+
+            End If
+
+        Else
+            '' git hub
+            MsgBox("Please select the pdf file for upload.")
+
+        End If
+
+
+        Response.Redirect(Request.Url.AbsoluteUri) '' refesh niya ang webform (ginamit ko para ma clear ang mga textboxes)
+        connection.Close()
+
+    End Sub
 End Class

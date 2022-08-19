@@ -11,7 +11,7 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class WebForm9
+Partial Public Class Login
 
     '''<summary>
     '''form1 control.
@@ -23,29 +23,29 @@ Partial Public Class WebForm9
     Protected WithEvents form1 As Global.System.Web.UI.HtmlControls.HtmlForm
 
     '''<summary>
-    '''Button1 control.
+    '''txtusername control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Button1 As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents txtusername As Global.System.Web.UI.HtmlControls.HtmlInputText
 
     '''<summary>
-    '''Button2 control.
+    '''txtpassword control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Button2 As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents txtpassword As Global.System.Web.UI.HtmlControls.HtmlInputPassword
 
     '''<summary>
-    '''Label1 control.
+    '''btnLogin control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Label1 As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents btnLogin As Global.System.Web.UI.WebControls.Button
 End Class

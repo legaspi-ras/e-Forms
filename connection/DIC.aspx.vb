@@ -1,7 +1,7 @@
 ﻿Imports MySql.Data.MySqlClient
 Imports System.Web
 
-Public Class WebForm10
+Public Class DIC1
     Inherits System.Web.UI.Page
 
     Dim connection As MySqlConnection
@@ -9,16 +9,15 @@ Public Class WebForm10
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
-        lblEmpname.Text = HttpContext.Current.Session(“empname”)
-
         ''call function Searchfile for loading data gridview
         If Not Me.IsPostBack Then
-            Me.Searchfile()
+            Me.Displayfile()
         End If
 
     End Sub
 
-    Private Sub Searchfile()
+    Private Sub Displayfile()
+
         'function that loads all the file information in data gridview
 
         Dim query As String
@@ -50,13 +49,12 @@ Public Class WebForm10
         '' displaying the other data in next page
 
         GridView1.PageIndex = e.NewPageIndex
-        Me.Searchfile()
+        Me.Displayfile()
 
     End Sub
 
     Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
 
-        ' search the file and display in datagridview based on the applicable specification 
         Dim query As String
         Dim search As String
 
@@ -82,7 +80,7 @@ Public Class WebForm10
 
     End Sub
 
-    Protected Sub GridView1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles GridView1.SelectedIndexChanged
+    Private Sub GridView1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles GridView1.SelectedIndexChanged
 
         ''getting the value of seleted index in grid view
         Dim formtitle As String = GridView1.SelectedRow.Cells(0).Text
@@ -159,14 +157,14 @@ Public Class WebForm10
 
         '' open pdf kay foxiy application -------------------------------------------------------------------------------------------------
 
-        ''Process.Start("C:\Users\romer.legaspi\source\repos\e_forms\connection\for_approval\" + filename)
+        Process.Start("C:\Users\romer.legaspi\source\repos\e_forms\connection\for_approval\" + filename)
 
         ''---------------------------------------------------------------------------------------------------------------------------------
 
         reader.Close()
         connection.Close()
 
-        Response.Redirect("WebForm11.aspx")
+        '' Response.Redirect("WebForm11.aspx")
 
         'connection = New MySqlConnection
         'connection.ConnectionString = ("server='localhost'; port='3306'; username='root'; password='powerhouse'; database='eforms'")
@@ -177,7 +175,7 @@ Public Class WebForm10
         'connection.Open()
 
         'Using sda As New MySqlDataAdapter(command)
-        '    Dim dt As New DataTable()
+        '    Dim dt As New DataTable()s
         '    sda.Fill(dt)
         '    GridView2.DataSource = dt
         '    GridView2.DataBind()
@@ -189,50 +187,7 @@ Public Class WebForm10
 
     Protected Sub btnLogout_Click(sender As Object, e As EventArgs) Handles btnLogout.Click
 
-
-        empuser.Text = HttpContext.Current.Session(“empId”)
-
-        Dim query As String
-        Dim logstatus As String
-        Dim usernow As String
-
-        connection = New MySqlConnection
-        connection.ConnectionString = ("server='localhost'; port='3306'; username='root'; password='powerhouse'; database='eforms'")
-
-        query = ("SELECT * FROM tblloginhistory ORDER BY id DESC LIMIT 1")
-
-        command = New MySqlCommand(query, connection)
-        connection.Open()
-        Dim reader As MySqlDataReader
-        reader = command.ExecuteReader()
-        reader.Read()
-
-        logstatus = reader(2)
-        usernow = reader(1)
-
-        reader.Close()
-        connection.Close()
-
-
-        Dim logoutdatentime = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss")
-
-
-        query = ("UPDATE tblloginhistory SET logstatus = 'Logout', applicableSpecs = '" & HttpContext.Current.Session(“appspecs”) & "', formControlnum = '" & HttpContext.Current.Session(“formctrlnum”) & "' , logoutDatentime = '" & logoutdatentime & "' WHERE empId = '" & empuser.Text & "' AND logStatus = 'Login'")
-
-
-        command = New MySqlCommand(query, connection)
-            connection.Open()
-
-            reader = command.ExecuteReader()
-            reader.Read()
-
-            reader.Close()
-            connection.Close()
-
-
-            '' call niya na dito yung next window tab na for viewing for approval
-            Response.Redirect("Login.aspx")
-
+        Response.Redirect("Login.aspx")
 
     End Sub
 End Class

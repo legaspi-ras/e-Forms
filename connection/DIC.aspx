@@ -1,16 +1,9 @@
-﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Approver.Master" CodeBehind="WebForm10.aspx.vb" Inherits="connection.WebForm10" %>
-
-   <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-
-       <br />
+﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/DIC.Master" CodeBehind="DIC.aspx.vb" Inherits="connection.DIC1" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+     <br />
        <asp:Button class="btn btn-primary" ID="btnLogout" runat="server" Text="Logout" Width="89px" />
-       <asp:Label ID="empuser" runat="server" Text="Label"></asp:Label> <br />
-       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      
-       <h6>Welcome, <asp:Label ID="lblEmpname" runat="server" Text="Label"></asp:Label> </h6> 
-     
 
-       <br />
+       <br /> <br />
 
            <div class="container-fluid">
         <div class = "row">
@@ -18,8 +11,8 @@
 
                 <div class="card">
                  <div class="card-body">
-                    <h5 class="card-title">List of request for Approval</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Search the request your looking for</h6>
+                    <h5 class="card-title">List of completed request</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Search by applicable specifications</h6>
      
                      <div class="input-group mb-3">
                          <%-- insert textbox here --%>
@@ -41,7 +34,7 @@
                     <asp:BoundField DataField="requestDate" DataFormatString="&quot;{0:d}&quot;" HeaderText="Request Date" SortExpression="requestDate" />
                     <asp:TemplateField HeaderText="Action">
                         <ItemTemplate>
-                            <asp:Button ID="Button1" runat="server" class="btn btn-primary" CausesValidation="false" CommandName="Select" Text="Update" />
+                            <asp:Button ID="Button1" runat="server" class="btn btn-primary" CausesValidation="false" CommandName="Select" Text="View" />
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
@@ -54,22 +47,8 @@
 
                </div>
 
-        <%--   <div class ="col">
-
-                <div class="card" >
-                    <div class="card-body">
-                        <h5 class="card-title">View File</h5>        
-                                                    
-                        <asp:HyperLink ID="HyperLink1" runat="server">Your selected pdf file will appear here.</asp:HyperLink>
-
-                    </div>
-                </div>
-
-           </div>--%>
-
         </div>
 
 
     </div>
-
 </asp:Content>

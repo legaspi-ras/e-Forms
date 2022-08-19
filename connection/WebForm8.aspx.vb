@@ -129,7 +129,7 @@ Public Class WebForm8
 
         Dim embed As String
         embed = " "
-        embed = "<object data=""{0}"" type=""application/pdf"" width=""600px"" height=""600px"" > </object>"
+        embed = "<object data=""{0}"" type=""application/pdf"" width=""400x"" height=""400px"" > </object>"
         HyperLink1.Text = String.Format(embed, ResolveUrl("~/for_approval/" + filename))
 
         ''Label3.Text = String.Format(ResolveUrl("~/pdf_files/" + filename))

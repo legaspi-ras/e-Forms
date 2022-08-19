@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Contact" Language="VB" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Contact.aspx.vb" Inherits="connection.Contact" %>
+﻿<%@ Page Title="Contact" Language="VB" MasterPageFile="~/DIC.Master" AutoEventWireup="true" CodeBehind="Contact.aspx.vb" Inherits="connection.Contact" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <h2><%--for validation lang to--%>Update e-Form</h2>

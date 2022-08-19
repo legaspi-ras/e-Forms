@@ -11,43 +11,97 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class _Default
+Partial Public Class WebForm11
 
     '''<summary>
-    '''txtsearch control.
+    '''btnview control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtsearch As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents btnview As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''btnsearch control.
+    '''Label6 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents btnsearch As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents Label6 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''gvfiles control.
+    '''DropDownList1 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents gvfiles As Global.System.Web.UI.WebControls.GridView
+    Protected WithEvents DropDownList1 As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''SqlDataSource1 control.
+    '''btnupdate control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents SqlDataSource1 As Global.System.Web.UI.WebControls.SqlDataSource
+    Protected WithEvents btnupdate As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Label1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Label1 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''lblRequestor control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblRequestor As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Label11 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Label11 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''lblRequestordept control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblRequestordept As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''lblfilename control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblfilename As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''lblContenttype control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblContenttype As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''Label2 control.
@@ -59,13 +113,13 @@ Partial Public Class _Default
     Protected WithEvents Label2 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''lblDepartment control.
+    '''lblFormdept control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents lblDepartment As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents lblFormdept As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''Label3 control.
@@ -113,110 +167,11 @@ Partial Public Class _Default
     Protected WithEvents Label5 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''txtasn control.
+    '''lblAppsspecs control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtasn As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''lblfilename control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents lblfilename As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''lblContenttype control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents lblContenttype As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''Label6 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents Label6 As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''txtEmpnum control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtEmpnum As Global.System.Web.UI.HtmlControls.HtmlInputText
-
-    '''<summary>
-    '''btnsearch1 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents btnsearch1 As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
-    '''Label1 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents Label1 As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''lblRequestor control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents lblRequestor As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''Label11 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents Label11 As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''lblRequestordept control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents lblRequestordept As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''btnDowload control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents btnDowload As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
-    '''HyperLink1 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents HyperLink1 As Global.System.Web.UI.WebControls.HyperLink
+    Protected WithEvents lblAppsspecs As Global.System.Web.UI.WebControls.Label
 End Class

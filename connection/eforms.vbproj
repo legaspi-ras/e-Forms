@@ -233,6 +233,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
+    <Content Include="DIC.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -245,12 +246,14 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="imgs\dcc_logo.png" />
+    <Content Include="Login.aspx" />
     <Content Include="Scripts\pdf.js" />
     <Content Include="Scripts\pdf.sandbox.js" />
     <Content Include="Scripts\pdf.worker.js" />
     <Content Include="Scripts\WebForm2.aspx" />
     <Content Include="WebForm1.aspx" />
     <Content Include="WebForm10.aspx" />
+    <Content Include="WebForm11.aspx" />
     <Content Include="WebForm4.aspx" />
     <Content Include="WebForm5.aspx" />
     <Content Include="WebForm6.aspx" />
@@ -282,6 +285,8 @@
     <Content Include="bootstrap\js\pdf.js.map" />
     <Content Include="bootstrap\js\pdf.sandbox.js.map" />
     <Content Include="bootstrap\js\pdf.worker.js.map" />
+    <Content Include="Approver.Master" />
+    <Content Include="DIC.Master" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -315,6 +320,13 @@
     <Content Include="Bundle.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Approver.Master.designer.vb">
+      <DependentUpon>Approver.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Approver.Master.vb">
+      <DependentUpon>Approver.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.vb" />
     <Compile Include="App_Start\RouteConfig.vb" />
     <Compile Include="About.aspx.designer.vb">
@@ -338,8 +350,29 @@
     <Compile Include="Default.aspx.designer.vb">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DIC.aspx.designer.vb">
+      <DependentUpon>DIC.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DIC.aspx.vb">
+      <DependentUpon>DIC.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="DIC.Master.designer.vb">
+      <DependentUpon>DIC.Master</DependentUpon>
+    </Compile>
+    <Compile Include="DIC.Master.vb">
+      <DependentUpon>DIC.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Global.asax.vb">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.designer.vb">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.vb">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -400,6 +433,13 @@
     </Compile>
     <Compile Include="WebForm10.aspx.vb">
       <DependentUpon>WebForm10.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="WebForm11.aspx.designer.vb">
+      <DependentUpon>WebForm11.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm11.aspx.vb">
+      <DependentUpon>WebForm11.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="WebForm4.aspx.designer.vb">

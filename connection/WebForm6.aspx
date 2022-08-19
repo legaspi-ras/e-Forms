@@ -99,7 +99,7 @@
 
                   <tr>
                      <td></td>
-                    <td><br /> <asp:Button ID="btnUploadnSend" runat="server" class="btn btn-primary" Text="Submit Form" Enabled="False" /> </td>
+                    <td><br /> <asp:Button ID="btnUploadnSend" runat="server" class="btn btn-primary" Text="Submit eForm" Enabled="False" /> </td>
                 </tr>
             </table>
 
